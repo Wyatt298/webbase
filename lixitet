@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tết Lì Xì May Mắn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Full screen video background */
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire screen */
+            z-index: -1; /* Sends the video behind other content */
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 0;
+            color: #FFD54F;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #FFEB3B;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin-top: 50px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .gift {
+            background-color: rgba(211, 47, 47, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gift h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #FFD54F;
+        }
+
+        .gift p {
+            font-size: 18px;
+            color: #FFEB3B;
+            font-weight: bold;
+        }
+
+        .gift .money {
+            font-size: 26px;
+            color: #FFD54F;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .qr-container {
+            margin-top: 50px;
+        }
+
+		.qr-container {
+			margin-top: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: auto;
+		}
+
+		.qr-code img {
+			width: 150px;
+			height: 150px;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+			transition: transform 0.3s ease-in-out;
+		}
+
+
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #FFEB3B;
+            font-size: 18px;
+        }
+
+        .footer a {
+            color: #FFD54F;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Firework animation */
+        @keyframes fireworks {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            60% {
+                opacity: 0.5;
+                transform: scale(2.5) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        /* Firework particle explosion */
+        .firework {
+            position: absolute;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #FFD54F;
+            border-radius: 50%;
+            animation: fireworks 2s ease-out infinite;
+        }
+
+        /* Create random firework positions */
+        .firework:nth-child(odd) {
+            left: 10%;
+            animation-delay: 0.5s;
+        }
+
+        .firework:nth-child(even) {
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        /* Lì Xì Animation */
+        #lixi-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .lixi {
+            position: absolute;
+            width: 14px;
+            height: 20px;
+            background: linear-gradient(180deg, #d63031, #c0392b);
+            border-radius: 3px;
+            box-shadow: 0 4px 10px rgba(214, 48, 49, 0.4);
+            animation: lixi-fall linear infinite;
+        }
+
+        .lixi::after {
+            content: "福";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #f1c40f;
+        }
+
+        @keyframes lixi-fall {
+            from {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="https://www.pexels.com/vi-vn/download/video/5451399/" type="video/mp4">
+    </video>
+
+    <h1>Tết Lì Xì May Mắn 2026</h1>
+    <h3>Hế lô Ánh xinh gái hãy chọn lì xì may mắn nhất nhé
+		Hy vọng 2026 Ánh sẽ thật xinh hơn và cười thật nhiều hơn nhé
+	</h3>
+	
+    <div class="container">
+        <!-- 8 gift boxes -->
+        <div class="gift" id="gift-0" onclick="openGift(0)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-1" onclick="openGift(1)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-2" onclick="openGift(2)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-3" onclick="openGift(3)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-4" onclick="openGift(4)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-5" onclick="openGift(5)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-6" onclick="openGift(6)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+        <div class="gift" id="gift-7" onclick="openGift(7)">
+            <h3>Lì Xì 2026</h3>
+            <p>Chọn Bao</p>
+        </div>
+    </div>
+
+    <div class="qr-container">
+        <h2>Vui lòng gửi mã QR qua Messenger để nhận lì xì từ người đẹp trai nhất Hải Dương!</h2>
+        <div class="qr-code">
+            <img id="qr-image" src="https://cdnv2.tgdd.vn/bhx-static/bhx/News/Images/2025/01/12/1574111/image20_202501120014112122.jpg" alt="QR Code">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Chúc bạn một năm mới an khang thịnh vượng!</p>
+        <p><a href="#">Đặt quà li xi cho bạn bè!</a></p>
+    </div>
+
+    <div id="lixi-container"></div>
+
+    <script>
+        let opened = false;
+
+        // Function to generate a random amount of money
+        function getRandomAmount() {
+            const min = 100000;
+            const max = 1000000;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Function to handle gift opening
+        function openGift(index) {
+            if (opened) {
+                alert("Bạn chỉ được mở một bao lì xì!");
+                return;
+            }
+
+            const randomAmount = getRandomAmount();
+            const giftElement = document.getElementById(`gift-${index}`);
+            giftElement.innerHTML = `
+                <h3>Lì Xì 2026</h3>
+                <p>Chúc mừng bạn nhận được:</p>
+                <p class="money">${randomAmount.toLocaleString()} VND</p>
+            `;
+            document.getElementById('qr-image').src = 'https://image.voh.com.vn/voh/image/2024/12/30/meme-co-muon-li-xi-lhong-voh-185348.jpg'; // Replace with your QR code URL
+            opened = true;  // Disable further interactions
+            resetGifts();
+        }
+
+        // Function to reset the gifts after a gift is opened
+        function resetGifts() {
+            setTimeout(() => {
+                const gifts = document.querySelectorAll('.gift');
+                gifts.forEach((gift, index) => {
+                    if (gift.innerHTML.indexOf('Chúc mừng bạn nhận được:') === -1) {
+                        gift.innerHTML = `
+                            <h3>Lì Xì 2026</h3>
+                            <p>Chọn Bao</p>
+                        `;
+                    }
+                });
+                opened = false;  // Re-enable the game after a reset
+            }, 3000);  // Reset gifts after 3 seconds
+        }
+
+        // Create random fireworks in the background
+        setInterval(() => {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            document.body.appendChild(firework);
+            setTimeout(() => {
+                firework.remove();
+            }, 2000); // Remove the firework after it disappears
+        }, 1000); // Create a firework every 1 second
+
+        // Lì Xì falling effect
+        (function () {
+            const container = document.getElementById('lixi-container');
+            if (!container) return;
+
+            function createLixi() {
+                const lixi = document.createElement('div');
+                lixi.className = 'lixi';
+
+                const size = Math.random() * 6 + 12;
+                const duration = Math.random() * 3 + 4;
+
+                lixi.style.left = Math.random() * 100 + '%';
+                lixi.style.width = size + 'px';
+                lixi.style.height = size * 1.4 + 'px';
+                lixi.style.animationDuration = duration + 's';
+                lixi.style.opacity = Math.random() * 0.4 + 0.5;
+
+                container.appendChild(lixi);
+
+                setTimeout(() => {
+                    lixi.remove();
+                }, (duration + 1) * 1000);
+            }
+
+            setInterval(createLixi, 260);
+
+            for (let i = 0; i < 12; i++) {
+                setTimeout(createLixi, i * 120);
+            }
+        })();
+    </script>
+</body>
+</html>
